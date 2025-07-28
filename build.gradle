@@ -11,46 +11,58 @@ final var minecraftVersionsSuffix = isSingleMinecraftVersion ? "mc${minMinecraft
 // Specify properties for each resource pack
 final var properties = [
     [
-        id         : "fusion-block-transitions",
-        name       : "Fusion Block Transitions",
-        version    : "1.0.0",
-        description: "Adds transitions between natural blocks",
-        overlays   : []
+        id           : "fusion-block-transitions",
+        name         : "Fusion Block Transitions",
+        version      : "1.0.0",
+        description  : "Adds transitions between natural blocks",
+        curseforge_id: "1315457",
+        modrinth_id  : "ajcwQmG4",
+        overlays     : []
     ],
     [
-        id         : "fusion-connected-blocks",
-        name       : "Fusion Connected Blocks",
-        version    : "1.0.0",
-        description: "Makes textures from many blocks connect",
-        overlays   : []
+        id           : "fusion-connected-blocks",
+        name         : "Fusion Connected Blocks",
+        version      : "1.0.0",
+        description  : "Makes textures from many blocks connect",
+        curseforge_id: "1315458",
+        modrinth_id  : "2w5wDdfQ",
+        overlays     : []
     ],
     [
-        id         : "fusion-connected-glass",
-        name       : "Fusion Connected Glass",
-        version    : "1.0.0",
-        description: "Makes glass textures connect",
-        overlays   : []
+        id           : "fusion-connected-glass",
+        name         : "Fusion Connected Glass",
+        version      : "1.0.0",
+        description  : "Makes glass textures connect",
+        curseforge_id: "1315459",
+        modrinth_id  : "xuN3KzPl",
+        overlays     : []
     ],
     [
-        id         : "fusion-emissive-ores",
-        name       : "Fusion Emissive Ores",
-        version    : "1.0.0",
-        description: "Makes ores look emissive",
-        overlays   : []
+        id           : "fusion-emissive-ores",
+        name         : "Fusion Emissive Ores",
+        version      : "1.0.0",
+        description  : "Makes ores look emissive",
+        curseforge_id: "1315460",
+        modrinth_id  : "anEmXbCW",
+        overlays     : []
     ],
     [
-        id         : "fusion-stacking-items",
-        name       : "Fusion Stacking Items",
-        version    : "1.0.0",
-        description: "Adds unique item textures for different stack sizes",
-        overlays   : [24, 51]
+        id           : "fusion-stacking-items",
+        name         : "Fusion Stacking Items",
+        version      : "1.0.0",
+        description  : "Adds unique item textures for different stack sizes",
+        curseforge_id: "1315461",
+        modrinth_id  : "d2NwuerS",
+        overlays     : [24, 51]
     ],
     [
-        id         : "fusion-3d-items",
-        name       : "Fusion 3D Items",
-        version    : "1.0.0",
-        description: "Replaces many item textures with 3D models",
-        overlays   : [20, 40]
+        id           : "fusion-3d-items",
+        name         : "Fusion 3D Items",
+        version      : "1.0.0",
+        description  : "Replaces many item textures with 3D models",
+        curseforge_id: "1315462",
+        modrinth_id  : "YCXs6v9u",
+        overlays     : [20, 40]
     ]
 ]
 
@@ -123,20 +135,22 @@ publishMods {
             options.displayName = "v${entry.version} for ${minecraftVersionsString}"
             options.version = "${entry.version}-${minecraftVersionsSuffix}"
             options.changelog = file("${entry.name}/changelog.md").text
+            minecraftVersions.each options.minecraftVersions::add
         }
 
         curseforge(entry.name.replace(' ', '') + "CurseForge") {
             options.accept(it)
             accessToken = System.getenv("CURSEFORGE_TOKEN")
-            projectId = entry.id
+            projectId = entry.curseforge_id
             requires "fusion-connected-textures"
         }
 
         modrinth(entry.name.replace(' ', '') + "Modrinth") {
             options.accept(it)
             accessToken = System.getenv("MODRINTH_TOKEN")
-            projectId = entry.id
+            projectId = entry.modrinth_id
             requires "fusion-connected-textures"
+            modLoaders.add("minecraft")
         }
     }
 }
