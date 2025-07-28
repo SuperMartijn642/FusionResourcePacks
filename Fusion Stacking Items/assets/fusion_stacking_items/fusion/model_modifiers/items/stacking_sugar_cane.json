@@ -1,0 +1,25 @@
+{
+  "targets": [
+    "minecraft:sugar_cane"
+  ],
+  "models": [
+    {
+      "model": "fusion_stacking_items:item/sugar_cane_few",
+      "conditions": [
+        {
+          "type": "count",
+          "max": 7
+        }
+      ]
+    },
+    {
+      "model": "fusion_stacking_items:item/sugar_cane_many",
+      "conditions": [
+        {
+          "type": "count",
+          "max": 15
+        }
+      ]
+    }
+  ]
+}

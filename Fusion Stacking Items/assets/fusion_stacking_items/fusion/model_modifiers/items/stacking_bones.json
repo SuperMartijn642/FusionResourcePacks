@@ -1,0 +1,25 @@
+{
+  "targets": [
+    "minecraft:bone"
+  ],
+  "models": [
+    {
+      "model": "fusion_stacking_items:item/bone_many",
+      "conditions": [
+        {
+          "type": "count",
+          "min": 32
+        }
+      ]
+    },
+    {
+      "model": "fusion_stacking_items:item/bone_few",
+      "conditions": [
+        {
+          "type": "count",
+          "max": 7
+        }
+      ]
+    }
+  ]
+}

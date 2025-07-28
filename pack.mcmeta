@@ -1,0 +1,14 @@
+{
+  "pack": {
+    "description": "$description",
+    "pack_format": $min_pack_format,
+    "supported_formats": [$min_pack_format, $max_pack_format]
+  },
+  "fusion": {
+    "min_version": "$min_fusion_version"
+  },
+  "overlays": {
+    "entries": [$overlays
+    ]
+  }
+}

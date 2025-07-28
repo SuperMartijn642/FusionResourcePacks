@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "fusion_stacking_items:item/candles/lime_candle_many"
+  }
+}

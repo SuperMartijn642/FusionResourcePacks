@@ -1,0 +1,25 @@
+{
+  "targets": [
+    "minecraft:ghast_tear"
+  ],
+  "models": [
+    {
+      "model": "fusion_stacking_items:item/ghast_tear_many",
+      "conditions": [
+        {
+          "type": "count",
+          "min": 32
+        }
+      ]
+    },
+    {
+      "model": "fusion_stacking_items:item/ghast_tear_few",
+      "conditions": [
+        {
+          "type": "count",
+          "min": 16
+        }
+      ]
+    }
+  ]
+}

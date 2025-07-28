@@ -1,0 +1,25 @@
+{
+  "targets": [
+    "minecraft:iron_nugget"
+  ],
+  "models": [
+    {
+      "model": "fusion_stacking_items:item/iron_nugget_many",
+      "conditions": [
+        {
+          "type": "count",
+          "min": 32
+        }
+      ]
+    },
+    {
+      "model": "fusion_stacking_items:item/iron_nugget_few",
+      "conditions": [
+        {
+          "type": "count",
+          "min": 16
+        }
+      ]
+    }
+  ]
+}

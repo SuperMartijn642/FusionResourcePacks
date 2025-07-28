@@ -1,0 +1,25 @@
+{
+  "targets": [
+    "minecraft:chain"
+  ],
+  "models": [
+    {
+      "model": "fusion_stacking_items:item/chain_many",
+      "conditions": [
+        {
+          "type": "count",
+          "min": 32
+        }
+      ]
+    },
+    {
+      "model": "fusion_stacking_items:item/chain_few",
+      "conditions": [
+        {
+          "type": "count",
+          "min": 8
+        }
+      ]
+    }
+  ]
+}

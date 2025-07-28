@@ -1,0 +1,22 @@
+{
+  "pack": {
+    "description": "Dummy",
+    "pack_format": 15,
+    "supported_formats": [15, 1000]
+  },
+  "fusion": {
+    "min_version": "1.0.0"
+  },
+  "overlays": {
+    "entries": [
+      {
+        "formats": [24, 1000],
+        "directory": "pack_format_24"
+      },
+      {
+        "formats": [51, 1000],
+        "directory": "pack_format_51"
+      }
+    ]
+  }
+}

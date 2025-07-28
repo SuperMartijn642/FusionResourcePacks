@@ -1,0 +1,160 @@
+plugins {
+    id "me.modmuss50.mod-publish-plugin" version "0.8.4"
+}
+
+final var minecraftVersions = minecraft_versions.split(' ')
+final var minMinecraftVersion = minecraftVersions[0], maxMinecraftVersion = minecraftVersions[-1]
+final var isSingleMinecraftVersion = minMinecraftVersion == maxMinecraftVersion
+final var minecraftVersionsString = isSingleMinecraftVersion ? "Minecraft ${minMinecraftVersion}" : "Minecraft ${minMinecraftVersion}-${maxMinecraftVersion}"
+final var minecraftVersionsSuffix = isSingleMinecraftVersion ? "mc${minMinecraftVersion}" : "mc${minMinecraftVersion}-${maxMinecraftVersion}"
+
+// Specify properties for each resource pack
+final var properties = [
+    [
+        id         : "fusion-block-transitions",
+        name       : "Fusion Block Transitions",
+        version    : "1.0.0",
+        description: "Adds transitions between natural blocks",
+        overlays   : []
+    ],
+    [
+        id         : "fusion-connected-blocks",
+        name       : "Fusion Connected Blocks",
+        version    : "1.0.0",
+        description: "Makes textures from many blocks connect",
+        overlays   : []
+    ],
+    [
+        id         : "fusion-connected-glass",
+        name       : "Fusion Connected Glass",
+        version    : "1.0.0",
+        description: "Makes glass textures connect",
+        overlays   : []
+    ],
+    [
+        id         : "fusion-emissive-ores",
+        name       : "Fusion Emissive Ores",
+        version    : "1.0.0",
+        description: "Makes ores look emissive",
+        overlays   : []
+    ],
+    [
+        id         : "fusion-stacking-items",
+        name       : "Fusion Stacking Items",
+        version    : "1.0.0",
+        description: "Adds unique item textures for different stack sizes",
+        overlays   : [24, 51]
+    ],
+    [
+        id         : "fusion-3d-items",
+        name       : "Fusion 3D Items",
+        version    : "1.0.0",
+        description: "Replaces many item textures with 3D models",
+        overlays   : [20, 40]
+    ]
+]
+
+// Validate properties
+for (def entry in properties) {
+    // Check directory and pack.mcmeta exist
+    def directory = file(entry.name)
+    if (!directory.exists())
+        throw new IllegalStateException("No folder for entry '" + entry.name + "'!")
+    if (!file("${entry.name}/pack.mcmeta").exists())
+        throw new IllegalStateException("Pack '" + entry.name + "' is missing pack.mcmeta file!")
+    // Check changelog exists and has correct version
+    def changelog = file("${entry.name}/changelog.md")
+    if (!changelog.exists())
+        throw new IllegalStateException("Pack '" + entry.name + "' is missing changelog.md file!")
+    def changelogText = changelog.text.split('\n')
+    def changelogVersion = changelogText[0].substring(changelogText[0].lastIndexOf(' '))
+    if (changelogVersion == entry.version)
+        throw new IllegalStateException("Pack '" + entry.name + "' has a version mismatch with changelog! Specified is '" + entry.version + "', but changelog is at '" + changelogVersion + "'.")
+    // Check overlay folders exist
+    for (def format in entry.overlays) {
+        def overlayFolder = file("${entry.name}/pack_format_${format}")
+        if (!overlayFolder.exists())
+            throw new IllegalStateException("Pack '" + entry.name + "' is missing overlay folder for pack format '" + format + "'!")
+    }
+}
+
+// Create a zip task for each pack
+for (def e in properties) {
+    final def entry = e
+    //noinspection GroovyAssignabilityCheck
+    entry.zip = tasks.register("zip${entry.name.replace(' ', '')}", Zip) {
+        from("${entry.name}/") {
+            exclude("pack.mcmeta")
+        }
+        from("pack.mcmeta")
+        group = "zips"
+        destinationDirectory = layout.buildDirectory.dir("zips")
+        archiveFileName = "${entry.name} v${entry.version} for ${minecraftVersionsString}.zip"
+
+        // Replace pack.mcmeta with pack details
+        def overlays = ""
+        for (def format in entry.overlays) {
+            if (!overlays.isEmpty())
+                overlays += ","
+            overlays += "\n      {\n        \"formats\": [${format}, 1000],\n        \"directory\": \"pack_format_${format}\"\n      }"
+        }
+        filesMatching("pack.mcmeta") {
+            expand([
+                "description"       : entry.description,
+                "min_fusion_version": min_fusion_version,
+                "min_pack_format"   : min_pack_format,
+                "max_pack_format"   : max_pack_format,
+                "overlays"          : overlays
+            ])
+        }
+    }
+}
+
+publishMods {
+    //noinspection UnnecessaryQualifiedReference
+    type = me.modmuss50.mpp.ReleaseType.STABLE
+    maxRetries = 2
+
+    for (def e in properties) {
+        final def entry = e
+        //noinspection UnnecessaryQualifiedReference
+        java.util.function.Consumer<me.modmuss50.mpp.PublishOptions> options = options -> {
+            options.file = entry.zip.map(zip -> zip.archiveFile.get())
+            options.displayName = "v${entry.version} for ${minecraftVersionsString}"
+            options.version = "${entry.version}-${minecraftVersionsSuffix}"
+            options.changelog = file("${entry.name}/changelog.md").text
+        }
+
+        curseforge(entry.name.replace(' ', '') + "CurseForge") {
+            options.accept(it)
+            accessToken = System.getenv("CURSEFORGE_TOKEN")
+            projectId = entry.id
+            requires "fusion-connected-textures"
+        }
+
+        modrinth(entry.name.replace(' ', '') + "Modrinth") {
+            options.accept(it)
+            accessToken = System.getenv("MODRINTH_TOKEN")
+            projectId = entry.id
+            requires "fusion-connected-textures"
+        }
+    }
+}
+
+// Create publish tasks for each pack
+for (def entry in properties) {
+    def curseForgeTask = tasks.named("publish${entry.name.replace(' ', '')}CurseForge")
+    curseForgeTask.configure { group = "publishing/curseforge" }
+    def modrinthTask = tasks.named("publish${entry.name.replace(' ', '')}Modrinth")
+    modrinthTask.configure { group = "publishing/modrinth" }
+    tasks.register("publish${entry.name.replace(' ', '')}") {
+        group = "publishing"
+        dependsOn(curseForgeTask, modrinthTask)
+    }
+}
+// Rename the 'publishMods' task
+tasks.publishMods.group = "other"
+tasks.register("publishAll") {
+    group = "publishing"
+    dependsOn(tasks.publishMods)
+}

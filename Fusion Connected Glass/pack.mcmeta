@@ -1,0 +1,10 @@
+{
+  "pack": {
+    "description": "Dummy",
+    "pack_format": 15,
+    "supported_formats": [15, 1000]
+  },
+  "fusion": {
+    "min_version": "1.0.0"
+  }
+}

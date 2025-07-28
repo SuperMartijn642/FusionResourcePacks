@@ -1,0 +1,34 @@
+{
+  "targets": [
+    "minecraft:green_candle"
+  ],
+  "models": [
+    {
+      "model": "fusion_stacking_items:item/candles/green_candle_plenty",
+      "conditions": [
+        {
+          "type": "count",
+          "min": 32
+        }
+      ]
+    },
+    {
+      "model": "fusion_stacking_items:item/candles/green_candle_many",
+      "conditions": [
+        {
+          "type": "count",
+          "min": 16
+        }
+      ]
+    },
+    {
+      "model": "fusion_stacking_items:item/candles/green_candle_few",
+      "conditions": [
+        {
+          "type": "count",
+          "min": 2
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "targets": [
+    "minecraft:quartz"
+  ],
+  "models": [
+    {
+      "model": "fusion_stacking_items:item/quartz_few",
+      "conditions": [
+        {
+          "type": "count",
+          "max": 15
+        }
+      ]
+    }
+  ]
+}

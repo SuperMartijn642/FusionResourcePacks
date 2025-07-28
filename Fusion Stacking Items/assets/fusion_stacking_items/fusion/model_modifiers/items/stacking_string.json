@@ -1,0 +1,34 @@
+{
+  "targets": [
+    "minecraft:string"
+  ],
+  "models": [
+    {
+      "model": "fusion_stacking_items:item/string_few",
+      "conditions": [
+        {
+          "type": "count",
+          "max": 7
+        }
+      ]
+    },
+    {
+      "model": "fusion_stacking_items:item/string_many",
+      "conditions": [
+        {
+          "type": "count",
+          "max": 15
+        }
+      ]
+    },
+    {
+      "model": "fusion_stacking_items:item/string_plenty",
+      "conditions": [
+        {
+          "type": "count",
+          "min": 32
+        }
+      ]
+    }
+  ]
+}

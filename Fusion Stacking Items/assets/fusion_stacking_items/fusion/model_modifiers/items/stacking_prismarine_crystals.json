@@ -1,0 +1,35 @@
+{
+  "targets": [
+    "minecraft:prismarine_crystals"
+  ],
+  "models": [
+    {
+      "model": "fusion_stacking_items:item/prismarine_crystals_plenty",
+      "conditions": [
+        {
+          "type": "count",
+          "min": 32
+        }
+      ]
+    },
+    {
+      "model": "fusion_stacking_items:item/prismarine_crystals_many",
+      "conditions": [
+        {
+          "type": "count",
+          "min": 8,
+          "max": 15
+        }
+      ]
+    },
+    {
+      "model": "fusion_stacking_items:item/prismarine_crystals_few",
+      "conditions": [
+        {
+          "type": "count",
+          "max": 7
+        }
+      ]
+    }
+  ]
+}

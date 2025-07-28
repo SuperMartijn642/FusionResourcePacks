@@ -1,0 +1,25 @@
+{
+  "targets": [
+    "minecraft:sea_pickle"
+  ],
+  "models": [
+    {
+      "model": "fusion_stacking_items:item/sea_pickle_many",
+      "conditions": [
+        {
+          "type": "count",
+          "min": 32
+        }
+      ]
+    },
+    {
+      "model": "fusion_stacking_items:item/sea_pickle_few",
+      "conditions": [
+        {
+          "type": "count",
+          "min": 8
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "targets": [
+    "minecraft:glow_berries"
+  ],
+  "models": [
+    {
+      "model": "fusion_stacking_items:item/glow_berries_few",
+      "conditions": [
+        {
+          "type": "count",
+          "max": 7
+        }
+      ]
+    },
+    {
+      "model": "fusion_stacking_items:item/glow_berries_many",
+      "conditions": [
+        {
+          "type": "count",
+          "min": 32
+        }
+      ]
+    }
+  ]
+}

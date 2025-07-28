@@ -1,0 +1,16 @@
+{
+  "targets": [
+    "minecraft:scute"
+  ],
+  "models": [
+    {
+      "model": "fusion_stacking_items:item/turtle_scute_few",
+      "conditions": [
+        {
+          "type": "count",
+          "min": 32
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "fusion_stacking_items:item/candles/purple_candle_plenty"
+  }
+}
