@@ -1,6 +1,11 @@
 # <img alt="Fusion" align="center" height="30" src="/icons/fusion-logo.svg"> Fusion Resource Packs
+
+<br>
+
 This repository hosts the resources, as well as issues and pull requests, for a bunch of resource packs for <img alt="Fusion" align="center" height="16" src="/icons/fusion-logo.svg"> Fusion.
 Fusion is a mod which adds additional resource pack features. The repository for Fusion can be found [here](https://github.com/SuperMartijn642/Fusion).
+
+<br>
 
 ---
 
