@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="-6 -6 72 72" preserveAspectRatio="xMidYMid meet" color-interpolation-filters="sRGB" style="margin: auto;">
+    <g mask="url(#petals-mask)" opacity="1">
+        <rect width="60" height="60" fill="url(#orange-gradient)"/>
+        <rect width="60" height="60" fill="url(#shine-gradient)"/>
+    </g>
+    <g mask="url(#top-left-petal)" opacity="1">
+        <rect width="60" height="60" fill="url(#top-left-gradient)"/>
+        <rect width="60" height="60" fill="url(#shine-gradient)"/>
+    </g>
+    <g mask="url(#bottom-left-petal)" opacity="1">
+        <rect width="60" height="60" fill="url(#bottom-left-gradient)"/>
+        <rect width="60" height="60" fill="url(#shine-gradient)"/>
+    </g>
+    <g mask="url(#bottom-right-petal)" opacity="1">
+        <rect width="60" height="60" fill="url(#bottom-right-gradient)"/>
+        <rect width="60" height="60" fill="url(#shine-gradient)"/>
+    </g>
+    <defs>
+        <filter id="color-filter">
+            <feColorMatrix values="0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 0 0.99609375  0 0 0 1 0"/>
+        </filter>
+        <linearGradient x1="0" y1="1" x2="0" y2="0" id="orange-gradient">
+            <stop offset="0%" stop-color="#ff5857"/>
+            <stop offset="100%" stop-color="#f09819"/>
+        </linearGradient>
+        <linearGradient x1="0" y1="1" x2="0" y2="0" id="top-left-gradient">
+            <stop offset="0%" stop-color="#59FFF1"/>
+            <stop offset="100%" stop-color="#61EF1A"/>
+        </linearGradient>
+        <linearGradient x1="0" y1="1" x2="0" y2="0" id="bottom-left-gradient">
+            <stop offset="0%" stop-color="#1A87ED"/>
+            <stop offset="100%" stop-color="#59FFF1"/>
+        </linearGradient>
+        <linearGradient x1="0" y1="1" x2="0" y2="0" id="bottom-right-gradient">
+            <stop offset="0%" stop-color="#F159FF"/>
+            <stop offset="100%" stop-color="#59C7FF"/>
+        </linearGradient>
+        <radialGradient r="60%" id="shine-gradient">
+            <stop offset="0%" stop-color="white" stop-opacity="0"/>
+            <stop offset="50%" stop-color="white" stop-opacity="0">
+                <animate attributeType="CSS"
+                         attributeName="stop-opacity"
+                         from="1"
+                         to="0"
+                         values="0;0;1;0;0"
+                         keyTimes="0;0.1;0.14;0.3;1"
+                         dur="5s"
+                         repeatCount="indefinite"/>
+                <animate attributeName="offset"
+                         from="0"
+                         to="1"
+                         values="0;0;1;1"
+                         keyTimes="0;0.1;0.3;1"
+                         dur="5s"
+                         repeatCount="indefinite"/>
+            </stop>
+            <stop offset="100%" stop-color="white" stop-opacity="0"/>
+        </radialGradient>
+    </defs>
+    <mask id="petals-mask">
+        <g filter="url(#color-filter)">
+            <svg width="60" height="60" style="overflow: visible;" viewBox="0 0 409.60003662109375 409.60003662109375">
+                <path d="M285.865 0c-18.401 0-35.779 4.116-51.482 11.315C263.5 39.966 281.6 79.764 281.6 123.735c0 43.965-18.099 83.763-47.217 112.415 15.698 7.199 33.08 11.315 51.482 11.315 68.337 0 123.735-55.398 123.735-123.73C409.6 55.398 354.202 0 285.865 0z"/>
+            </svg>
+        </g>
+    </mask>
+    <mask id="top-left-petal">
+        <g filter="url(#color-filter)">
+            <svg width="60" height="60" style="overflow: visible;" viewBox="0 0 409.60003662109375 409.60003662109375">
+                <path d="M123.735 0C55.398 0 0 55.398 0 123.735c0 18.401 4.116 35.779 11.315 51.466C39.967 146.099 79.764 128 123.735 128c43.965 0 83.763 18.099 112.415 47.201 7.199-15.683 11.315-33.065 11.315-51.466C247.465 55.398 192.067 0 123.735 0z"/>
+            </svg>
+        </g>
+    </mask>
+    <mask id="bottom-left-petal">
+        <g filter="url(#color-filter)">
+            <svg width="60" height="60" style="overflow: visible;" viewBox="0 0 409.60003662109375 409.60003662109375">
+                <path d="M175.201 173.45c-15.683-7.199-33.065-11.315-51.466-11.315C55.398 162.135 0 217.533 0 285.865 0 354.202 55.398 409.6 123.735 409.6c18.401 0 35.779-4.116 51.466-11.315C146.099 369.633 128 329.836 128 285.865c0-43.965 18.099-83.763 47.201-112.415z"/>
+            </svg>
+        </g>
+    </mask>
+    <mask id="bottom-right-petal">
+        <g filter="url(#color-filter)">
+            <svg width="60" height="60" style="overflow: visible;" viewBox="0 0 409.60003662109375 409.60003662109375">
+                <path d="M398.285 234.383C369.633 263.5 329.836 281.6 285.865 281.6c-43.965 0-83.763-18.099-112.415-47.217-7.199 15.698-11.315 33.08-11.315 51.482 0 68.337 55.398 123.735 123.73 123.735 68.337 0 123.735-55.398 123.735-123.735 0-18.401-4.116-35.779-11.315-51.482z"/>
+            </svg>
+        </g>
+    </mask>
+</svg>
