@@ -6,5 +6,13 @@
   },
   "fusion": {
     "min_version": "1.0.0"
+  },
+  "overlays": {
+    "entries": [
+      {
+        "formats": [20, 1000],
+        "directory": "pack_format_20"
+      }
+    ]
   }
 }

@@ -22,11 +22,11 @@ final var properties = [
     [
         id           : "fusion-connected-blocks",
         name         : "Fusion Connected Blocks",
-        version      : "1.0.0",
+        version      : "1.0.1",
         description  : "Makes textures from many blocks connect",
         curseforge_id: "1315458",
         modrinth_id  : "2w5wDdfQ",
-        overlays     : []
+        overlays     : [20]
     ],
     [
         id           : "fusion-connected-glass",
