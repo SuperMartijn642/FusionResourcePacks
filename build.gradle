@@ -40,7 +40,7 @@ final var properties = [
     [
         id           : "fusion-emissive-ores",
         name         : "Fusion Emissive Ores",
-        version      : "1.0.0",
+        version      : "1.0.1",
         description  : "Makes ores look emissive",
         curseforge_id: "1315460",
         modrinth_id  : "anEmXbCW",
