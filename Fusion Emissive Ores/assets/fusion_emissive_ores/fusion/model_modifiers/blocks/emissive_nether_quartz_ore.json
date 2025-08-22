@@ -4,5 +4,6 @@
   ],
   "append": [
     "fusion_emissive_ores:block/nether_quartz_ore_overlay"
-  ]
+  ],
+  "show_breaking_overlay": false
 }
