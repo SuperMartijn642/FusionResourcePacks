@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-<!-- Please enter which resource pack this bug relates to. -->
+<!-- Please enter which resource pack this feature request relates to. -->
 **Resource pack**
 - Name: 
 - Version: 
